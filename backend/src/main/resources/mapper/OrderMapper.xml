@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.gamestore.dao.OrderMapper">
+    <resultMap id="OrderVOMap" type="com.example.gamestore.vo.OrderVO">
+        <id property="orderId" column="order_id"/>
+        <result property="totalAmount" column="total_amount"/>
+        <result property="status" column="status"/>
+        <result property="createdAt" column="created_at"/>
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_order(user_id, total_amount, status, address_id, created_at)
+        VALUES(#{userId}, #{totalAmount}, #{status}, #{addressId}, NOW())
+    </insert>
+
+    <select id="listByUser" resultMap="OrderVOMap">
+        SELECT o.id AS order_id, o.total_amount, o.status, o.created_at
+        FROM t_order o
+        WHERE o.user_id = #{userId}
+        ORDER BY o.created_at DESC
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <select id="countByUser" resultType="long">
+        SELECT COUNT(1) FROM t_order WHERE user_id = #{userId}
+    </select>
+</mapper>

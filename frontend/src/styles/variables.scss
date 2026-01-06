@@ -1,0 +1,93 @@
+// 颜色系统
+$primary-color: #1a73e8;
+$primary-dark: #0d47a1;
+$primary-light: #64b5f6;
+
+$secondary-color: #ff4757;
+$secondary-dark: #c62828;
+$secondary-light: #ff8a80;
+
+$accent-color: #00cec9;
+$accent-dark: #00b894;
+$accent-light: #81ecec;
+
+// 背景颜色
+$dark-bg: #0f111a;
+$dark-bg-light: #1a1d29;
+$dark-bg-lighter: #2a2d3a;
+
+// 卡片颜色
+$card-bg: #2a2d3a;
+$card-hover-bg: #343848;
+
+// 文本颜色
+$text-primary: #ffffff;
+$text-secondary: #b0b3c1;
+$text-muted: #8a8d9b;
+$text-disabled: #6c6f80;
+
+// 状态颜色
+$success-color: #2ed573;
+$warning-color: #ffa502;
+$error-color: #ff4757;
+$info-color: #1e90ff;
+
+// 折扣颜色
+$discount-color: #ff6b6b;
+$discount-hot: #ff3838;
+
+// 边框颜色
+$border-color: #3a3d4a;
+$border-light: #4a4d5a;
+
+// 阴影
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
+$shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+$shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.4);
+
+// 字体
+$font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-md: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 24px;
+$font-size-2xl: 32px;
+$font-size-3xl: 48px;
+
+// 间距
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 48px;
+$spacing-3xl: 64px;
+
+// 边框圆角
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+$border-radius-round: 9999px;
+
+// 动画
+$transition-fast: 150ms ease;
+$transition-normal: 300ms ease;
+$transition-slow: 500ms ease;
+
+// 布局
+$header-height: 64px;
+$sidebar-width: 280px;
+$max-width: 1400px;
+$container-padding: 20px;
+
+// Z-index
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;

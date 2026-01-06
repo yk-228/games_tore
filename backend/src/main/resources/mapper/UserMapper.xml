@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.gamestore.dao.UserMapper">
+    <resultMap id="UserMap" type="com.example.gamestore.entity.User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="email" column="email"/>
+        <result property="phone" column="phone"/>
+        <result property="avatar" column="avatar"/>
+        <result property="role" column="role"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
+    </resultMap>
+
+    <select id="findByUsername" resultMap="UserMap">
+        SELECT * FROM t_user WHERE username = #{username}
+    </select>
+
+    <select id="findById" resultMap="UserMap">
+        SELECT * FROM t_user WHERE id = #{id}
+    </select>
+
+    <select id="findAll" resultMap="UserMap">
+        SELECT * FROM t_user
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_user(username, password, email, phone, avatar, role, created_at, updated_at)
+        VALUES (#{username}, #{password}, #{email}, #{phone}, #{avatar}, #{role}, NOW(), NOW())
+    </insert>
+
+    <update id="updateProfile">
+        UPDATE t_user
+        SET email = #{email},
+            phone = #{phone},
+            avatar = #{avatar},
+            updated_at = NOW()
+        WHERE id = #{id}
+    </update>
+</mapper>

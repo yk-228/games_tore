@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.gamestore.dao.CartMapper">
+    <resultMap id="CartItemMap" type="com.example.gamestore.entity.CartItem">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="gameId" column="game_id"/>
+        <result property="quantity" column="quantity"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
+    </resultMap>
+
+    <select id="findByUserAndGame" resultMap="CartItemMap">
+        SELECT * FROM t_cart WHERE user_id = #{userId} AND game_id = #{gameId}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_cart(user_id, game_id, quantity, created_at, updated_at)
+        VALUES(#{userId}, #{gameId}, #{quantity}, NOW(), NOW())
+    </insert>
+
+    <update id="updateQuantity">
+        UPDATE t_cart SET quantity = #{quantity}, updated_at = NOW() WHERE id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM t_cart WHERE id = #{id}
+    </delete>
+
+    <select id="listByUser" resultType="com.example.gamestore.vo.CartVO">
+        SELECT c.id AS cartId,
+               c.game_id AS gameId,
+               g.name AS gameName,
+               g.cover_url AS coverUrl,
+               g.price AS price,
+               c.quantity AS quantity
+        FROM t_cart c
+        JOIN t_game g ON c.game_id = g.id
+        WHERE c.user_id = #{userId}
+        ORDER BY c.updated_at DESC
+    </select>
+</mapper>
